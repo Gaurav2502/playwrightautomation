@@ -1,7 +1,7 @@
 const{test,expect}=require('@playwright/test');
 
 
-test.only('handling browser two', async ({page}) => {
+test('handling browser two', async ({page}) => {
     const productTitle = page.locator(".products h4");
     await page.goto('https://rahulshettyacademy.com/seleniumPractise/#/');
     
