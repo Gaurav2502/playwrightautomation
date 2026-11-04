@@ -1,7 +1,7 @@
 const{test,expect}=require('@playwright/test');
 
 
-test('Assigment1', async ({page}) => {
+test.only('Assigment1', async ({page}) => {
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
     const Register=page.locator(".text-reset");
     const firstName=page.locator("[type='firstName']");
@@ -19,32 +19,26 @@ test('Assigment1', async ({page}) => {
     const productTitle = page.locator(".card-body h5");
 
     
-    const testData = {
-        firstName: process.env.PLAYWRIGHT_TEST_FIRST_NAME,
-        lastName: process.env.PLAYWRIGHT_TEST_LAST_NAME,
-        email: process.env.PLAYWRIGHT_TEST_EMAIL,
-        mobile: process.env.PLAYWRIGHT_TEST_MOBILE,
-        password: process.env.PLAYWRIGHT_TEST_PASSWORD,
-    };
-    test.skip(!Object.values(testData).every(Boolean), 'Set the PLAYWRIGHT_TEST_* variables to run this registration flow.');
+    const Email="gaurav06@mailinator.com";
+    const Password="Password123";
 
 
     await Register.click();
-    await firstName.fill(testData.firstName);
-    await lastName.fill(testData.lastName);
-    await email.fill(testData.email);
-    await mobile.fill(testData.mobile);
+    await firstName.fill("Gaurav");
+    await lastName.fill("Arundekar");
+    await email.fill(Email);
+    await mobile.fill("7894563216");
     await occupation.selectOption("Student");
     await maleradio.click();
-    await password.fill(testData.password);
-    await confirmpassword.fill(testData.password);
+    await password.fill(Password);
+    await confirmpassword.fill(Password);
     await above18.click();
 
     await submit.click();//register button click
 
     await Loginbtn.click();
-    await email.fill(testData.email);
-    await password.fill(testData.password);
+    await email.fill(Email);
+    await password.fill(Password);
     await logint.click();
 
     console.log(await productTitle.first().textContent());
