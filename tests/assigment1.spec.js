@@ -2,6 +2,7 @@ const{test,expect}=require('@playwright/test');
 
 
 test('Assigment1', async ({page}) => {
+    await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
     const Register=page.locator(".text-reset");
     const firstName=page.locator("[type='firstName']");
     const lastName=page.locator("[id='lastName']");
@@ -27,7 +28,6 @@ test('Assigment1', async ({page}) => {
     };
     test.skip(!Object.values(testData).every(Boolean), 'Set the PLAYWRIGHT_TEST_* variables to run this registration flow.');
 
-    await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
 
     await Register.click();
     await firstName.fill(testData.firstName);
